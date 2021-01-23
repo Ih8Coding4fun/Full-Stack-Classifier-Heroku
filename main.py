@@ -1,7 +1,6 @@
 from typing import List
 
 import fastapi
-import uvicorn
 
 import joblib
 
