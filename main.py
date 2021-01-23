@@ -42,7 +42,7 @@ async def predict(request: PredictionRequest) -> List[InferenceRun]:
     return results
 
 
-if __name__ == "__main__":
-    host = "127.0.0.1"
-    # host = "0.0.0.0"  # use when deployed and change the port to the required one based on deployment environment
-    uvicorn.run(app, port=8000, debug=True, host=host)
+# if __name__ == "__main__":
+#     host = "127.0.0.1"
+#     # host = "0.0.0.0"  # use when deployed and change the port to the required one based on deployment environment
+#     uvicorn.run(app, port=8000, debug=True, host=host)
