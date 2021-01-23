@@ -20,25 +20,27 @@ class InferenceRun(BaseModel):
 
 
 app = fastapi.FastAPI()
-classifier = joblib.load("models/20newsgroups/trained_20newsgroups.joblib")  # joblib or whatever format
-classes = classifier.classes_  # TODO : Make this more modular add type hinting on model import somehow
+# classifier = joblib.load("models/20newsgroups/trained_20newsgroups.joblib")  # joblib or whatever format
+# classes = classifier.classes_  # TODO : Make this more modular add type hinting on model import somehow
 
 
 @app.get("/")
 async def root():  # TODO: update so all available classifiers are predicted modular way in a nice table
-    classifiers = classifier.steps
-    return {"message": str(classifiers)}   # TODO: Simple html template to print classifiers nicely
+    # classifiers = classifier.steps
+    # return {"message": str(classifiers)}   # TODO: Simple html template to print classifiers nicely
+    return {"message": "hello world"}
 
 
 @app.post("/predict/")
-async def predict(request: PredictionRequest) -> List[InferenceRun]:
-    predictions = classifier.predict_proba(request.Text)
-    results = []
-    for pred in predictions:
-        best_class = classes[np.argmax(pred)]
-        confidence = np.max(pred)
-        results.append(InferenceRun(PredictedClass=best_class, PredictedConfidence=confidence))
-    return results
+async def predict():
+    # predictions = classifier.predict_proba(request.Text)
+    # results = []
+    # for pred in predictions:
+    #     best_class = classes[np.argmax(pred)]
+    #     confidence = np.max(pred)
+    #     results.append(InferenceRun(PredictedClass=best_class, PredictedConfidence=confidence))
+    # return results
+    return {"predictions": "hello there"}
 
 
 # if __name__ == "__main__":
